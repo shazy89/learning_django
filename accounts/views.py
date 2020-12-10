@@ -2,7 +2,8 @@ from django.shortcuts import render
 from django.http import HttpResponse
 # Create your views here.
 from .models import *
-
+from .forms import OrderForm
+import ipdb
 
 def home(request):
 	orders = Order.objects.all()
@@ -35,7 +36,15 @@ def customer(request, pk_test):
 	return render(request, 'accounts/customer.html',context)
 
 def createOrder(request):
-	context = {}
-	return render(request, 'accounts/order_form.html',context )
+
+	form = OrderForm()
+	if request.method == 'POST':
+		#print('Printing POST:', request.POST)
+		#ipdb.set_trace()
+
+	
+	context = {'form':form}
+	return render(request, 'accounts/order_form.html', context)
+
 
 
