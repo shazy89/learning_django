@@ -13,7 +13,7 @@ def home(request):
 	total_orders = orders.count()
 	delivered = orders.filter(status='Delivered').count()
 	pending = orders.filter(status='Pending').count()
-
+# this is how you pas dictionary wth more queries
 	context = {'orders':orders, 'customers':customers,
 	'total_orders':total_orders,'delivered':delivered,
 	'pending':pending }
@@ -26,4 +26,5 @@ def products(request):
 	return render(request, 'accounts/products.html', {'products':products})
 
 def customer(request):
+
 	return render(request, 'accounts/customer.html')
